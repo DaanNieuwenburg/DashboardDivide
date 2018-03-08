@@ -7,6 +7,8 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import {WebsitePage} from '../pages/website/website';
+import {TestdetailsPage} from '../pages/testdetails/testdetails';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +20,9 @@ import { ChartsModule } from 'ng2-charts';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+	WebsitePage,
+	TestdetailsPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import { ChartsModule } from 'ng2-charts';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+	WebsitePage,
+	TestdetailsPage
   ],
   providers: [
     StatusBar,

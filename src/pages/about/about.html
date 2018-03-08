@@ -9,8 +9,11 @@
 <ion-content>
   <ion-list>
     <ion-list-header>Websites</ion-list-header>
-    <ion-item>
-      <ion-icon name="mensquare" item-start></ion-icon>
+    <ion-item (click)="showWebsitePage()">
+      <ion-icon name="checkmark-circle" item-left ></ion-icon>
+      Epplejeck    </ion-item>
+	  <ion-item (click)="showWebsitePage()">
+      <ion-icon name="close-circle" item-left></ion-icon>
       Mensquare    </ion-item>
   </ion-list>
 </ion-content>

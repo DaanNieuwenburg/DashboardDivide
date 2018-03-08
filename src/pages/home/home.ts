@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {TestdetailsPage} from '../testdetails/testdetails';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,9 @@ public chartClicked(e:any):void {
 
 public chartHovered(e:any):void {
   console.log(e);
+}
+showDetailsPage() {
+    this.navCtrl.push(TestdetailsPage);
 }
   constructor(public navCtrl: NavController) {
 
