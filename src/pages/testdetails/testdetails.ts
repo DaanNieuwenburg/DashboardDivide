@@ -14,8 +14,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'testdetails.html',
 })
 export class TestdetailsPage {
+public testName;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+	  this.testName = navParams.get("testName");
   }
 
   ionViewDidLoad() {
