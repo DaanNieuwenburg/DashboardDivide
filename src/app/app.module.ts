@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {WebsitePage} from '../pages/website/website';
 import {TestdetailsPage} from '../pages/testdetails/testdetails';
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChartsModule } from 'ng2-charts';

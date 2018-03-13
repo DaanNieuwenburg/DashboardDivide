@@ -1,0 +1,31 @@
+{
+	"websites": [{
+			"name": "EppleJeck",
+			"tests": [{
+					"id": 0,
+					"title": "Test1",
+					"description": "Test1Description"
+				},
+				{
+					"id": 1,
+					"title": "Test2",
+					"description": "Test2Description"
+				}
+			]
+		},
+		{
+			"name": "Mensquare",
+			"tests": [{
+					"id": 0,
+					"title": "Test1",
+					"description": "Test1Description"
+				},
+				{
+					"id": 1,
+					"title": "Test2",
+					"description": "Test2Description"
+				}
+			]
+		}
+	]
+}

@@ -39,7 +39,7 @@ public chartHovered(e:any):void {
   console.log(e);
 }
 showDetailsPage() {
-    this.navCtrl.push(TestdetailsPage,{testName:"test 1"});
+	this.navCtrl.push(TestdetailsPage, {"testName":"test 1", "testDescription":"Desc 1"});
 }
 constructor(public navCtrl: NavController) {
 		this.checkTests();

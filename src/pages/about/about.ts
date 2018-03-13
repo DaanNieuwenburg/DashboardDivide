@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {WebsitePage} from '../website/website';
+import {TestModel} from 'models/test-models';
 
 
 @Component({
@@ -8,9 +9,9 @@ import {WebsitePage} from '../website/website';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-
-showWebsitePage() {
-    this.navCtrl.push(WebsitePage);
+showWebsitePage(selectedsite:string) {
+	
+    this.navCtrl.push(WebsitePage,{"websiteName":selectedsite});
 }
   constructor(public navCtrl: NavController) {
 

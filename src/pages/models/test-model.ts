@@ -1,9 +1,4 @@
 export class TestModel{
-	constructor(id:int, title:string, description:string){
-		this.id = id;
-		this.title = title;
-		this.description = description;
-	}
 	private _id:int;
 	private _title:string;
 	private _description:string;
@@ -26,5 +21,6 @@ export class TestModel{
 	set description(description: string){
 		this._description = description;
 	}
-
+	constructor(){
+	}
 }

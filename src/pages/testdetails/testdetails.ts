@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {TestModel} from 'models/test-models';
 
 /**
  * Generated class for the TestdetailsPage page.
@@ -15,9 +16,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TestdetailsPage {
 public testName;
+public testDescription;
+public test:TestModel;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 	  this.testName = navParams.get("testName");
+	  this.testDescription = navParams.get("testDescription");
   }
 
   ionViewDidLoad() {
