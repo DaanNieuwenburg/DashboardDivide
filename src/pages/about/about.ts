@@ -9,12 +9,16 @@ import {TestModel} from 'models/test-models';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-showWebsitePage(selectedsite:string) {
-	
-    this.navCtrl.push(WebsitePage,{"websiteName":selectedsite});
+public sites;
+
+showWebsitePage(site) {	
+    this.navCtrl.push(WebsitePage,{site:site});
 }
   constructor(public navCtrl: NavController) {
-
+	this.sites = [
+		{name: 'Epplejeck'},
+		{name: 'Mensquare'}
+		];
   }
 
 }

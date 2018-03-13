@@ -9,19 +9,9 @@
   <p>
     This page wil represent the latest failed tests and a diagram of how many tests failed  </p>
   <ion-list>
-    <ion-list-header>Failed tests</ion-list-header>
-    <ion-item (click)="showDetailsPage()">
-      <ion-icon name="close-circle" item-left></ion-icon>
-      Testname 1
-    </ion-item>
- <ion-item (click)="showDetailsPage()">
-        <ion-icon name="close-circle" item-left></ion-icon>
-          Testname 2    
-      </ion-item>
- <ion-item (click)="showDetailsPage()">
-      <ion-icon name="close-circle" item-left></ion-icon>
-      Testname 3
-    </ion-item></ion-list>  
+	<ion-item *ngFor="let item of items" (click)="showDetailsPage(item)">{{item.name}}
+	<ion-icon name="close-circle" item-left></ion-icon></ion-item>
+	</ion-list>
 <div style="display: block">
     <canvas baseChart
                 [data]="doughnutChartData"

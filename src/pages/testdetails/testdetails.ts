@@ -20,8 +20,8 @@ public testDescription;
 public test:TestModel;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-	  this.testName = navParams.get("testName");
-	  this.testDescription = navParams.get("testDescription");
+	  this.testName = navParams.get("item").name;
+	  this.testDescription = navParams.get("item").description;
   }
 
   ionViewDidLoad() {

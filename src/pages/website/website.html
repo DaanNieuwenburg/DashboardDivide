@@ -15,19 +15,8 @@
 
 <ion-content padding>
 <h1>{{WebsiteName}}</h1>
-  <ion-list>
-    <ion-list-header>Tests</ion-list-header>
-    <ion-item (click)="showDetailsPage()">
-      <ion-icon name="close-circle" item-left></ion-icon>
-      Testname 1
-    </ion-item>
- <ion-item  (click)="showDetailsPage()">
-        <ion-icon name="checkmark-circle" item-left></ion-icon>
-          Testname 2    
-      </ion-item>
- <ion-item (click)="showDetailsPage()">
-      <ion-icon name="close-circle" item-left></ion-icon>
-      Testname 3
-    </ion-item>
-	</ion-list>  
+<ion-list>
+	<ion-item *ngFor="let item of items" (click)="showDetailsPage(item)">{{item.name}}</ion-item>
+</ion-list>     
+
 </ion-content>

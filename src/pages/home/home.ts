@@ -10,6 +10,7 @@ export class HomePage {
 	private testDataForChart:bool[] = [true,true,true,false,true,true,false,true,false,true];
 	private failedtests:int = 0;
 	private succestests:int = 0;
+	public items;
 // Doughnut
 doughnutChartLabels:string[] = ['Failed tests', 'Succeed Tests'];
 public doughnutChartData:number[] = [this.failedtests, this.succestests];
@@ -38,11 +39,16 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
-showDetailsPage() {
-	this.navCtrl.push(TestdetailsPage, {"testName":"test 1", "testDescription":"Desc 1"});
+showDetailsPage(item) {
+	this.navCtrl.push(TestdetailsPage, {item: item});
 }
 constructor(public navCtrl: NavController) {
 		this.checkTests();
+		this.items = [
+		{name: 'test1', description: 'desc1'},
+		{name: 'test2', description: 'desc2'},
+		{name: 'test3', description: 'desc3'}
+		];
   }
   
 
