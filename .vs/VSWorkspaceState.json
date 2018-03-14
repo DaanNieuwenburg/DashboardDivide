@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\models",
+    "\\src\\pages",
+    "\\src\\pages\\about",
+    "\\src\\pages\\contact",
+    "\\src\\pages\\home",
+    "\\src\\pages\\testdetails",
+    "\\src\\pages\\website"
+  ],
+  "SelectedNode": "\\src\\pages\\about\\about.ts",
+  "PreviewInSolutionExplorer": false
+}
