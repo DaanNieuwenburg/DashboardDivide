@@ -6,6 +6,7 @@ import {TestdetailsPage} from '../testdetails/testdetails';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
 	private testDataForChart:bool[] = [true,true,true,false,true,true,false,true,false,true];
 	private failedtests:int = 0;
