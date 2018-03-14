@@ -6,6 +6,7 @@ import {TestdetailsPage} from '../testdetails/testdetails';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
 	private testDataForChart:bool[] = [true,true,true,false,true,true,false,true,false,true];
 	private failedtests:int = 0;
@@ -47,7 +48,8 @@ constructor(public navCtrl: NavController) {
 		this.items = [
 		{name: 'test1', description: 'desc1'},
 		{name: 'test2', description: 'desc2'},
-		{name: 'test3', description: 'desc3'}
+		{name: 'test3', description: 'desc3'},
+		{name: 'testEX', description: 'descEX'}
 		];
   }
   

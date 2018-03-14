@@ -8,11 +8,7 @@
   <h2>Welcome to the dashboard</h2>
   <p>
     This page wil represent the latest failed tests and a diagram of how many tests failed  </p>
-  <ion-list>
-	<ion-item *ngFor="let item of items" (click)="showDetailsPage(item)">{{item.name}}
-	<ion-icon name="close-circle" item-left></ion-icon></ion-item>
-	</ion-list>
-<div style="display: block">
+	<div style="display: block">
     <canvas baseChart
                 [data]="doughnutChartData"
                 [labels]="doughnutChartLabels"
@@ -20,4 +16,10 @@
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
   </div>
+  <br>
+  <ion-list>
+	<ion-item *ngFor="let item of items" (click)="showDetailsPage(item)">{{item.name}}
+	<ion-icon name="close-circle" item-left></ion-icon></ion-item>
+	</ion-list>
+
 </ion-content>
