@@ -24,20 +24,16 @@ public items;
 
   ionViewDidLoad() {
 	  this.items = [
-		{name: 'test 1', description: 'description 1', succeed: true},
-		{name: 'test 2', description: 'description 2', succeed: false},
-		{name: 'test 3', description: 'description 3', succeed: false}
+		{name: 'test 1', description: 'description 1', succeed: true, priority: '1'},
+		{name: 'test 2', description: 'description 2', succeed: false, priority: '2'},
+		{name: 'test 3', description: 'description 3', succeed: false, priority: '3'}
 		];
     console.log('ionViewDidLoad WebsitePage');
   }
   showDetailsPage(item) {
-	  //for(var i = 0; i < this.TestList.length; i++){
-		// if(i == index){
-			 //this.navCtrl.push(TestdetailsPage,{"testName":this.TestList[i].name, "testDesc":this.TestList[i].description});
 			 this.navCtrl.push(TestdetailsPage, {item: item});
   }
-  }
-	 // }
+}
     
 
 

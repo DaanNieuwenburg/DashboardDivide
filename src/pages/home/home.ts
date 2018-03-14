@@ -46,10 +46,9 @@ showDetailsPage(item) {
 constructor(public navCtrl: NavController) {
 		this.checkTests();
 		this.items = [
-		{name: 'test1', description: 'desc1'},
-		{name: 'test2', description: 'desc2'},
-		{name: 'test3', description: 'desc3'},
-		{name: 'testEX', description: 'descEX'}
+		{name: 'test1', description: 'desc1', succeed: false},
+		{name: 'test2', description: 'desc2', succeed: false},
+		{name: 'test3', description: 'desc3', succeed: false}
 		];
   }
   
