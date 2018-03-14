@@ -1,4 +1,4 @@
-export class TestModel{
+/*export class TestModel{
 	private _id:int;
 	private _title:string;
 	private _description:string;
@@ -23,4 +23,4 @@ export class TestModel{
 	}
 	constructor(){
 	}
-}
+}*/
