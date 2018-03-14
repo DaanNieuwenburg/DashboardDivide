@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {WebsitePage} from '../website/website';
-import {TestModel} from 'models/test-models';
+
 
 
 @Component({
