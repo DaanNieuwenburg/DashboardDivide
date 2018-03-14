@@ -1,16 +1,16 @@
 export class TestModel{
-	constructor(id:int, title:string, description:string){
+	constructor(id:any, title:string, description:string){
 		this.id = id;
 		this.title = title;
 		this.description = description;
 	}
-	private _id:int;
+	private _id:any;
 	private _title:string;
 	private _description:string;
-	get id(): int{
+	get id(): any{
 		return this._id;
 	}
-	set id(id: int){
+	set id(id: any){
 		this._id = id;
 	}
 	get title(): string{

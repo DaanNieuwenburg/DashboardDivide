@@ -15,7 +15,7 @@ import {TestModel} from '../models/test-model';
   templateUrl: 'website.html',
 })
 export class WebsitePage {
-private TestList:TestModel[] = [new TestModel(0,"web1","desc1"),new TestModel(1,"web2","desc2")];
+//private TestList:TestModel[] = [new TestModel(0,"web1","desc1"),new TestModel(1,"web2","desc2")];
 public WebsiteName;
 public items;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -24,9 +24,9 @@ public items;
 
   ionViewDidLoad() {
 	  this.items = [
-		{name: 'test 1', description: 'description 1'},
-		{name: 'test 2', description: 'description 2'},
-		{name: 'test 3', description: 'description 3'}
+		{name: 'test 1', description: 'description 1', succeed: true},
+		{name: 'test 2', description: 'description 2', succeed: false},
+		{name: 'test 3', description: 'description 3', succeed: false}
 		];
     console.log('ionViewDidLoad WebsitePage');
   }
@@ -35,8 +35,9 @@ public items;
 		// if(i == index){
 			 //this.navCtrl.push(TestdetailsPage,{"testName":this.TestList[i].name, "testDesc":this.TestList[i].description});
 			 this.navCtrl.push(TestdetailsPage, {item: item});
-	  }
+  }
+  }
 	 // }
     
-}
+
 
