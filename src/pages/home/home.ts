@@ -8,9 +8,9 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 })
 
 export class HomePage {
-	private testDataForChart:bool[] = [true,true,true,false,true,true,false,true,false,true];
-	private failedtests:int = 0;
-	private succestests:int = 0;
+	private testDataForChart:Array<boolean> = [true, true, true, false, false, true];
+	private failedtests:number = 0;
+	private succestests:number = 0;
 	public items;
 // Doughnut
 doughnutChartLabels:string[] = ['Failed tests', 'Succeed Tests'];
@@ -21,7 +21,9 @@ public doughnutChartType:string = 'doughnut';
 /*ionViewDidLoad() {
     this.checkTests();
   }*/
+  
 checkTests(){
+	// TODO - check items from websites
 	for(var i = 0; i < this.testDataForChart.length; i++){
 		if(this.testDataForChart[i] == true){
 			this.succestests++;
@@ -40,6 +42,8 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
+
+// Navigate to test details page
 showDetailsPage(item) {
 	this.navCtrl.push(TestdetailsPage, {item: item});
 }

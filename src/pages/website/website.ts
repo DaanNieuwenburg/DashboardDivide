@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TestdetailsPage} from '../testdetails/testdetails';
-import {TestModel} from '../models/test-model';
-/**
- * Generated class for the WebsitePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,7 +8,6 @@ import {TestModel} from '../models/test-model';
   templateUrl: 'website.html',
 })
 export class WebsitePage {
-//private TestList:TestModel[] = [new TestModel(0,"web1","desc1"),new TestModel(1,"web2","desc2")];
 public WebsiteName;
 public items;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
