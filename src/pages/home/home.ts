@@ -9,12 +9,14 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 
 export class HomePage {
 	private testDataForChart:Array<boolean> = [true, true, true, false, false, true];
-	private failedtests:number = 0;
-	private succestests:number = 0;
+	private failedtests:number;
+	private succestests:number;
+	private inconclusive:number;
+	private skipped:number;
 	public items;
 // Doughnut
-doughnutChartLabels:string[] = ['Failed tests', 'Succeed Tests'];
-public doughnutChartData:number[] = [this.failedtests, this.succestests];
+doughnutChartLabels:string[] = ['Failed tests', 'Succeed Tests', 'Inconclusive Tests', 'Skipped'];
+public doughnutChartData:number[] = [this.failedtests, this.succestests, this.inconclusive, this.skipped];
 public doughnutChartType:string = 'doughnut';
 
 // events
@@ -47,8 +49,25 @@ public chartHovered(e:any):void {
 showDetailsPage(item) {
 	this.navCtrl.push(TestdetailsPage, {item: item});
 }
+ionViewWillEnter(): void {
+    this.load();
+  }
+  load(): void {
+    this.http
+      .get('https://divideuitestapi.azurewebsites.net/api/chartdata')
+      .subscribe((data: any) => {
+        console.dir(data);
+        this.succestests = data.passed;
+		this.failedtests = data.failed;
+		this.inconclusive = data.inconclusive;
+		this.skipped = data.skipped;
+      },
+      (error: any) => {
+        console.dir(error);
+      });
+  }
 constructor(public navCtrl: NavController) {
-		this.checkTests();
+		//this.checkTests();
 		this.items = [
 		{name: 'test1', description: 'desc1', succeed: false, priority: '1'},
 		{name: 'test2', description: 'desc2', succeed: false, priority: '2'},
