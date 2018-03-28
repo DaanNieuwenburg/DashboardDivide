@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import {WebsitePage} from '../website/website';
-//import {WebsiteModel} from '../../models/websiteModel';
 
 @Component({
   selector: 'page-about',
@@ -10,17 +9,12 @@ import {WebsitePage} from '../website/website';
 })
 export class AboutPage {
   //public sites;
-  public sites: Array<any> = []; // to store returned php data
+  public sites: Array<any> = []; // to store returned data
 
 showWebsitePage(site) {	
     this.navCtrl.push(WebsitePage,{site:site});
 }
   constructor(public navCtrl: NavController, public http: HttpClient) {
-  // remove this code when using sql 
-	/*this.sites = [
-		{name: 'Epplejeck'},
-		{name: 'Mensquare'}
-		];*/
   }
 
 // Triggers website Loading
@@ -33,9 +27,16 @@ ionViewWillEnter(): void {
       .subscribe((data: any) => {
         console.dir(data);
         this.sites = data;
+		this.sites.sort(this.strAsc);
       },
       (error: any) => {
         console.dir(error);
       });
   }
+  // Sort array ascending on websiteName
+  strAsc(a, b):void {
+   if (a.websiteName>b.websiteName) return 1;
+   else if (a.websiteName<b.websiteName) return -1;
+   else return 0;
+ }
 }

@@ -25,17 +25,8 @@ public testPriority;
       this.testStatus = navParams.get("item").succeed;
 	  this.testPriority = navParams.get("item").priority;
       this.getstatus();
-	  //this.getpriority();
   }
-  // get priority of app and port to screen
-  public getpriority():void{
-	  if(this.testPriority == '1')
-		  this.testPriority = "high priority";
-	  else if(this.testPriority == '2')
-		  this.testPriority = "mid priority";
-	  else
-		  this.testPriority = "low priority";
-  }
+
   // Check if test has succeeded or not
   public getstatus(): void {
     if (this.testStatus == false) {
