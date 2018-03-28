@@ -25,7 +25,7 @@ public testPriority;
       this.testStatus = navParams.get("item").succeed;
 	  this.testPriority = navParams.get("item").priority;
       this.getstatus();
-	  this.getpriority();
+	  //this.getpriority();
   }
   // get priority of app and port to screen
   public getpriority():void{
