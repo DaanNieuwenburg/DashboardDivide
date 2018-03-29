@@ -9,10 +9,12 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 })
 export class WebsitePage {
 public WebsiteName;
+private WebsiteId; 
 public items;
 //public items: Array<any> = []; // to store returned data
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 	  this.WebsiteName = navParams.get("site").name;
+
   }
 
   ionViewDidLoad() {
@@ -43,6 +45,3 @@ public items;
   }
 */
 }
-    
-
-

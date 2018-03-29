@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import {SimpleChanges} from '@angular/core';
 import {TestdetailsPage} from '../testdetails/testdetails';
 
 @Component({
@@ -9,32 +11,21 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 
 export class HomePage {
 	private testDataForChart:Array<boolean> = [true, true, true, false, false, true];
-	private failedtests:number;
-	private succestests:number;
-	private inconclusive:number;
-	private skipped:number;
+	failedtests:number;
+	succestests:number;
+	inconclusive:number;
+	skipped:number;
 	public items;
 // Doughnut
-doughnutChartLabels:string[] = ['Failed tests', 'Succeed Tests', 'Inconclusive Tests', 'Skipped'];
-public doughnutChartData:number[] = [this.failedtests, this.succestests, this.inconclusive, this.skipped];
+doughnutChartLabels:string[] = ['Failed tests', 'Succeed Tests', 'Inconclusive Tests','Skipped'];
+public doughnutChartData: Array<number> = [] = [this.failedtests, this.succestests, this.inconclusive, this.skipped];
 public doughnutChartType:string = 'doughnut';
 
-// events
-/*ionViewDidLoad() {
-    this.checkTests();
-  }*/
-  
-checkTests(){
-	// TODO - check items from websites
-	for(var i = 0; i < this.testDataForChart.length; i++){
-		if(this.testDataForChart[i] == true){
-			this.succestests++;
-		}else{
-			this.failedtests++;
-		}
-	}
-	this.doughnutChartData[0] = this.failedtests;
-	this.doughnutChartData[1] = this.succestests;
+//this class is nessesary to view the chart
+//(without it wont refresh and will disable the values)
+addDataToChart(){
+  var data = [this.failedtests, this.succestests,this.inconclusive,this.skipped];
+  this.doughnutChartData = data;
 }
 
 public chartClicked(e:any):void {
@@ -54,26 +45,27 @@ ionViewWillEnter(): void {
   }
   load(): void {
     this.http
-      .get('https://divideuitestapi.azurewebsites.net/api/chartdata')
+      .get('https://apidivide.azurewebsites.net/api/website/circledata')
       .subscribe((data: any) => {
         console.dir(data);
         this.succestests = data.passed;
+        console.dir(data.passed);
 		this.failedtests = data.failed;
 		this.inconclusive = data.inconclusive;
 		this.skipped = data.skipped;
+    this.addDataToChart();
       },
       (error: any) => {
         console.dir(error);
       });
   }
-constructor(public navCtrl: NavController) {
-		//this.checkTests();
+constructor(public navCtrl: NavController,public http: HttpClient) {
 		this.items = [
 		{name: 'test1', description: 'desc1', succeed: false, priority: '1'},
 		{name: 'test2', description: 'desc2', succeed: false, priority: '2'},
 		{name: 'test3', description: 'desc3', succeed: false, priority: '3'}
 		];
   }
-  
+
 
 }

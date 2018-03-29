@@ -11,7 +11,7 @@ export class AboutPage {
   //public sites;
   public sites: Array<any> = []; // to store returned data
 
-showWebsitePage(site) {	
+showWebsitePage(site) { // id as parameter --> next page API call with id
     this.navCtrl.push(WebsitePage,{site:site});
 }
   constructor(public navCtrl: NavController, public http: HttpClient) {
@@ -23,11 +23,11 @@ ionViewWillEnter(): void {
   }
   load(): void {
     this.http
-      .get('https://divideuitestapi.azurewebsites.net/api/website')
+      .get('https://apidivide.azurewebsites.net/api/website')
       .subscribe((data: any) => {
         console.dir(data);
         this.sites = data;
-		this.sites.sort(this.strAsc);
+		      this.sites.sort(this.strAsc);
       },
       (error: any) => {
         console.dir(error);
