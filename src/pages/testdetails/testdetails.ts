@@ -17,15 +17,20 @@ public startTime;
 public endTime;
 public asserts;
 public testStatus;
+public websiteUrl;
 public testPriority;
 public testDescription;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
 	  /*this.testName = navParams.get("item").name;
-      this.testDescription = navParams.get("item").description;
-      this.testStatus = navParams.get("item").succeed;
-	  this.testPriority = navParams.get("item").priority;*/
-    //this.testID = navParams.get("item").id;
+      this.testStatus = navParams.get("item").result;
+      this.methodName = navParams.get("item").methodName;
+	  this.className = navParams.get("item").className;
+    this.startTime = navParams.get("item").startTime;
+    this.endTime = navParams.get("item").endTime;
+    this.duration = navParams.get("item").duration + " sec";
+    this.asserts = navParams.get("item").asserts;*/
+    this.testID = navParams.get("item").id;
       //this.getstatus();
   }
   // Triggers API Call
@@ -34,17 +39,18 @@ public testDescription;
     }
     load(): void {
       this.http
-        .get('http://apidivide.azurewebsites.net/api/testcase/148')
+        .get('http://apidivide.azurewebsites.net/api/testcase/'+this.testID)
         .subscribe((data: any) => {
           console.dir(data);
           this.testName = data.name;
-          this.testStatus = data.result;
+          this.testStatus = data.result.status;
           this.methodName = data.methodName;
           this.className = data.className;
           this.startTime = data.startTime;
           this.endTime = data.endTime;
           this.duration = data.duration + " sec";
           this.asserts = data.asserts;
+          this.websiteUrl = data.website.url;
         },
         (error: any) => {
           console.dir(error);

@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import {WebsitePage} from '../website/website';
-import {TestRunPage} from '../testrunpage/testrunpage';
+import {TestrunPage} from '../testrunpage/testrunpage';
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 export class AboutPage {
-  //public sites;
   public sites: Array<any> = []; // to store returned data
 
 showTestrunPage(site) { // id as parameter --> next page API call with id
-    this.navCtrl.push(TestRunPage,{site:site});
+    this.navCtrl.push(TestrunPage,{site:site});
 }
   constructor(public navCtrl: NavController, public http: HttpClient) {
   }
@@ -28,7 +26,7 @@ ionViewWillEnter(): void {
       .subscribe((data: any) => {
         console.dir(data);
         this.sites = data;
-		    //this.sites.sort(this.strAsc);
+		    this.sites.sort(this.strAsc);
       },
       (error: any) => {
         console.dir(error);

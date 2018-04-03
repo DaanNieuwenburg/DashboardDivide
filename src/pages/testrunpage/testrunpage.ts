@@ -3,40 +3,30 @@ import { HttpClient } from '@angular/common/http';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {WebsitePage} from '../website/website';
 
-/**
- * Generated class for the TestrunpagePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-testrunpage',
   templateUrl: 'testrunpage.html',
 })
-export class TestrunpagePage {
-	public items;
+export class TestrunPage {
+	public items: Array<any> = []; // List items
   public testrunid;
-  public websiteid;
+  public websiteid;             // id of current website
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
-    //this.websiteid = navParams.get("site").id;
-    this.websiteid=24;
-    this.items = [
-   {id:0 ,name: 'test 1'},
-   {id:1, name: 'test 2'},
-   {id:2, name: 'test 3'}
-  ];
+    this.websiteid = navParams.get("site").id;
   }
+  // Parameter item = selected testrun
+  // Parameter  website = website id
   showWebsitePage(item) {
        this.navCtrl.push(WebsitePage, {item: item, website:this.websiteid});
   }
+  // Triggers the API call
   ionViewWillEnter(): void {
-      //this.load();
+      this.load();
     }
     load(): void {
       this.http
-        .get('https://apidivide.azurewebsites.net/api/testrun/lastofwebsite/24') // TODO
+        .get('https://apidivide.azurewebsites.net/api/testrun/24') // TODO
         .subscribe((data: any) => {
           console.dir(data);
           this.items = data;
@@ -46,7 +36,7 @@ export class TestrunpagePage {
         });
     }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TestrunpagePage');
+    console.log('ionViewDidLoad TestrunPage');
   }
 
 }

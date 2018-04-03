@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {WebsitePage} from '../pages/website/website';
 import {TestdetailsPage} from '../pages/testdetails/testdetails';
+import {TestrunPage} from '../pages/testrunpage/testrunpage';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,6 +25,7 @@ import { ChartsModule } from 'ng2-charts';
     ContactPage,
     HomePage,
     TabsPage,
+    TestrunPage,
 	WebsitePage,
 	TestdetailsPage
   ],
@@ -41,6 +43,7 @@ import { ChartsModule } from 'ng2-charts';
     HomePage,
     TabsPage,
 	WebsitePage,
+  TestrunPage,
 	TestdetailsPage
   ],
   providers: [

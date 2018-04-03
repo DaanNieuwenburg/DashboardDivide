@@ -61,9 +61,9 @@ ionViewWillEnter(): void {
   }
 constructor(public navCtrl: NavController,public http: HttpClient) {
 		this.items = [
-		{name: 'test1', description: 'desc1', succeed: false, priority: '1'},
-		{name: 'test2', description: 'desc2', succeed: false, priority: '2'},
-		{name: 'test3', description: 'desc3', succeed: false, priority: '3'}
+		{id:82, name: 'test1', description: 'desc1', succeed: false, priority: '1'},
+		{id:83, name: 'test2', description: 'desc2', succeed: false, priority: '2'},
+		{id:84, name: 'test3', description: 'desc3', succeed: false, priority: '3'}
 		];
   }
 
