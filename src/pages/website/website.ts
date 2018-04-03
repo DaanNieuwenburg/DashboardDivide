@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 import {TestdetailsPage} from '../testdetails/testdetails';
 
 @IonicPage()
@@ -9,32 +10,34 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 })
 export class WebsitePage {
 public WebsiteName;
-private WebsiteId; 
+private WebsiteId;
+private testRunId;
 public items;
 //public items: Array<any> = []; // to store returned data
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-	  this.WebsiteName = navParams.get("site").name;
-
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
+	  //this.WebsiteName = navParams.get("site").name;
+    this.websiteid = navParams.get("website");
+    this.testRunId = navParams.get("item").id;
   }
 
   ionViewDidLoad() {
 	  // Remove when data is received from API
-	  this.items = [
-		{name: 'test 1', description: 'description 1', succeed: true, priority: '1'},
-		{name: 'test 2', description: 'description 2', succeed: false, priority: '2'},
-		{name: 'test 3', description: 'description 3', succeed: false, priority: '3'}
-		];
+	  /*this.items = [
+		{id:0 ,name: 'test 1', description: 'description 1', succeed: true, priority: '1'},
+		{id:1, name: 'test 2', description: 'description 2', succeed: false, priority: '2'},
+		{id:2, name: 'test 3', description: 'description 3', succeed: false, priority: '3'}
+  ];*/
     console.log('ionViewDidLoad WebsitePage');
   }
   showDetailsPage(item) {
 			 this.navCtrl.push(TestdetailsPage, {item: item});
   }
-  /*ionViewWillEnter(): void {
+  ionViewWillEnter(): void {
     this.load();
   }
   load(): void {
     this.http
-      .get('https://divideuitestapi.azurewebsites.net/api/website') //TODO CHANGE URL
+      .get('http://apidivide.azurewebsites.net/api/testcase/'+this.websiteid+'/'+this.testRunId) //TODO CHANGE URL
       .subscribe((data: any) => {
         console.dir(data);
         this.items = data;
@@ -43,5 +46,4 @@ public items;
         console.dir(error);
       });
   }
-*/
 }
