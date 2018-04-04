@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import {SimpleChanges} from '@angular/core';
 import {TestdetailsPage} from '../testdetails/testdetails';
 
 @Component({
@@ -10,7 +9,6 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 })
 
 export class HomePage {
-	private testDataForChart:Array<boolean> = [true, true, true, false, false, true];
 	failedtests:number;
 	succestests:number;
 	inconclusive:number;

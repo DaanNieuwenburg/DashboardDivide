@@ -10,13 +10,13 @@ import {TestdetailsPage} from '../testdetails/testdetails';
 })
 export class WebsitePage {
 public WebsiteName;
-private WebsiteId;
+private websiteId;
 private testRunId;
 public items;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
-	  //this.WebsiteName = navParams.get("site").name;
-    this.websiteid = navParams.get("website");
+	  //this.WebsiteName = navParams.get("site").name/;
+    this.websiteId = navParams.get("website");
     this.testRunId = navParams.get("item").id;
   }
 
@@ -32,7 +32,7 @@ public items;
   }
   load(): void {
     this.http
-      .get('http://apidivide.azurewebsites.net/api/testcase/'+this.websiteid+"/"+this.testRunId) //TODO CHANGE URL
+      .get('http://apidivide.azurewebsites.net/api/testcase/'+this.websiteId+"/"+this.testRunId) //TODO CHANGE URL
       .subscribe((data: any) => {
         console.dir(data);
         this.items = data;

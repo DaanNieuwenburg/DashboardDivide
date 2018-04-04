@@ -22,16 +22,7 @@ public testPriority;
 public testDescription;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
-	  /*this.testName = navParams.get("item").name;
-      this.testStatus = navParams.get("item").result;
-      this.methodName = navParams.get("item").methodName;
-	  this.className = navParams.get("item").className;
-    this.startTime = navParams.get("item").startTime;
-    this.endTime = navParams.get("item").endTime;
-    this.duration = navParams.get("item").duration + " sec";
-    this.asserts = navParams.get("item").asserts;*/
     this.testID = navParams.get("item").id;
-      //this.getstatus();
   }
   // Triggers API Call
   ionViewWillEnter(): void {
@@ -56,15 +47,6 @@ public testDescription;
           console.dir(error);
         });
     }
-  // Check if test has succeeded or not
-  public getstatus(): void {
-    if (this.testStatus == false) {
-      this.testStatus = "failed";
-    }
-    else {
-      this.testStatus = "succeed";
-    }
-  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestdetailsPage');
   }

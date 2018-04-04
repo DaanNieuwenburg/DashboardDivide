@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Platform} from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -6,6 +7,8 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+public chartWidth: any;
+public chartHeight: any;
 public lineChartData:Array<any> = [
 {data: [2,3,2,6,1,0,9,2], label: 'Failed tests'}
 ];
@@ -25,17 +28,6 @@ public lineChartColors:Array<any> = [
 public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
 
-/*public randomize():void {
-  let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-  for (let i = 0; i < this.lineChartData.length; i++) {
-    _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-    for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-      _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-    }
-  }
-  this.lineChartData = _lineChartData;
-}*/
-
 // events
 public chartClicked(e:any):void {
   console.log(e);
@@ -44,8 +36,10 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, platform: Platform) {
+      platform.ready().then((readySource) => {
+        this.chartWidth = platform.width() - 40;
+      })
   }
 
 }

@@ -6,12 +6,8 @@
 </ion-header>
 
 <ion-content padding> <p> This page will list all the websites and the results of the tests of that site</p><p> if a one test of the site will fail the site will show a failed result</p>
-<ion-content>
     <ion-list-header>Websites</ion-list-header>
     <ion-list>
 	    <ion-item *ngFor="let site of sites" (click)="showTestrunPage(site)">{{site.websiteName}}</ion-item>
 	</ion-list>
-</ion-content>
-
-
 </ion-content>
