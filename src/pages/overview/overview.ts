@@ -14,7 +14,7 @@ public lineChartData:Array<any> = [
 ];
 public lineChartLabels:Array<any> = ['Monday', 'Thusday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'];
 public lineChartOptions:any = {
-responsive: true};
+responsive: true, maintainAspectRatio: false};
 public lineChartColors:Array<any> = [
 { // grey
 	backgroundColor: 'rgba(148,159,177,0.2)',
@@ -39,6 +39,8 @@ public chartHovered(e:any):void {
   constructor(public navCtrl: NavController, platform: Platform) {
       platform.ready().then((readySource) => {
         this.chartWidth = platform.width() - 40;
+        this.chartHeight = platform.height() - 200;
+        console.log("height " + platform.height());
       })
   }
 
