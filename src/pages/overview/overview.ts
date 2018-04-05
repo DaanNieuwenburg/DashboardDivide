@@ -3,10 +3,10 @@ import {Platform} from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-overview',
+  templateUrl: 'overview.html'
 })
-export class ContactPage {
+export class OverviewPage {
 public chartWidth: any;
 public chartHeight: any;
 public lineChartData:Array<any> = [

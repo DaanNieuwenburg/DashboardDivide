@@ -1,44 +1,41 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import {TestdetailsPage} from '../testdetails/testdetails';
+import {TestrunPage} from '../testrunpage/testrunpage';
 
-@IonicPage()
 @Component({
   selector: 'page-website',
-  templateUrl: 'website.html',
+  templateUrl: 'website.html'
 })
 export class WebsitePage {
-public WebsiteName;
-private websiteId;
-private testRunId;
-public items;
+  public sites: Array<any> = []; // to store returned data
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
-	  //this.WebsiteName = navParams.get("site").name/;
-    this.websiteId = navParams.get("website");
-    this.testRunId = navParams.get("item").id;
+showTestrunPage(site) { // id as parameter --> next page API call with id
+    this.navCtrl.push(TestrunPage,{site:site});
+}
+  constructor(public navCtrl: NavController, public http: HttpClient) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WebsitePage');
-  }
-  // Push to details page
-  showDetailsPage(item) {
-			 this.navCtrl.push(TestdetailsPage, {item: item});
-  }
-  ionViewWillEnter(): void {
+// Triggers website Loading
+ionViewWillEnter(): void {
     this.load();
   }
   load(): void {
     this.http
-      .get('http://apidivide.azurewebsites.net/api/testcase/'+this.websiteId+"/"+this.testRunId) //TODO CHANGE URL
+      .get('https://apidivide.azurewebsites.net/api/website')
       .subscribe((data: any) => {
         console.dir(data);
-        this.items = data;
+        this.sites = data;
+		    this.sites.sort(this.strAsc);
       },
       (error: any) => {
         console.dir(error);
       });
   }
+  // Sort array ascending on websiteName
+  strAsc(a, b) {
+   if (a.websiteName>b.websiteName) return 1;
+   else if (a.websiteName<b.websiteName) return -1;
+   else return 0;
+ }
 }

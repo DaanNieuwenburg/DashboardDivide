@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {WebsitePage} from '../website/website';
+import {TestPage} from '../test/test';
 
 @IonicPage()
 @Component({
@@ -18,7 +18,7 @@ export class TestrunPage {
   // Parameter item = selected testrun
   // Parameter  website = website id
   showWebsitePage(item) {
-       this.navCtrl.push(WebsitePage, {item: item, website:this.websiteid});
+       this.navCtrl.push(TestPage, {item: item, website:this.websiteid});
   }
   // Triggers the API call
   ionViewWillEnter(): void {

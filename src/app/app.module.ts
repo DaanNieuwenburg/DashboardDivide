@@ -5,11 +5,11 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { WebsitePage } from '../pages/website/website';
+import { OverviewPage } from '../pages/overview/overview';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import {WebsitePage} from '../pages/website/website';
+import {TestPage} from '../pages/test/test';
 import {TestdetailsPage} from '../pages/testdetails/testdetails';
 import {TestrunPage} from '../pages/testrunpage/testrunpage';
 
@@ -21,12 +21,12 @@ import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    WebsitePage,
+    OverviewPage,
     HomePage,
     TabsPage,
     TestrunPage,
-	WebsitePage,
+	TestPage,
 	TestdetailsPage
   ],
   imports: [
@@ -38,11 +38,11 @@ import { ChartsModule } from 'ng2-charts';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    WebsitePage,
+    OverviewPage,
     HomePage,
     TabsPage,
-	WebsitePage,
+	TestPage,
   TestrunPage,
 	TestdetailsPage
   ],
