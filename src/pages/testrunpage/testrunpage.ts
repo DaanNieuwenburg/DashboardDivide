@@ -26,15 +26,30 @@ export class TestrunPage {
     }
     load(): void {
       this.http
-        .get('https://apidivide.azurewebsites.net/api/testrun/24') // TODO
+        .get('https://apidivide.azurewebsites.net/api/testrun/'+this.websiteid) // TODO
         .subscribe((data: any) => {
           console.dir(data);
           this.items = data;
+          this.items.sort(this.strDesc);
         },
         (error: any) => {
           console.dir(error);
         });
     }
+    strDesc(a, b) {
+     if (a.startTime>b.startTime) return -1;
+     else if (a.startTime<b.startTime) return 1;
+     else return 0;
+   }
+   doRefresh(refresher){
+     console.log('Begin async operation', refresher);
+     this.items.length = 0;
+     this.load();
+     setTimeout(() => {
+       console.log('Async operation has ended');
+       refresher.complete();
+     }, 2000);
+   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestrunPage');
   }
