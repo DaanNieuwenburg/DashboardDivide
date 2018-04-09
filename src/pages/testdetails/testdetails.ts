@@ -34,14 +34,16 @@ public testDescription;
         .subscribe((data: any) => {
           console.dir(data);
           this.testName = data.name;
-          this.testStatus = data.result.status;
+          //this.testStatus = data.result.status;
           this.methodName = data.methodName;
           this.className = data.className;
           this.startTime = data.startTime;
           this.endTime = data.endTime;
           this.duration = data.duration + " sec";
           this.asserts = data.asserts;
-          this.websiteUrl = data.website.url;
+          this.testPriority = data.priority;
+          //this.websiteUrl = data.website.url;
+          this.websiteUrl = "abcdefghijk"
         },
         (error: any) => {
           console.dir(error);

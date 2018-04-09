@@ -9,6 +9,15 @@
 <ion-content padding class="no-scroll">
 <p>
     This page will show the amount of tests that failed of this week.  </p>
+    <label class = "item item-input item-select">
+   <div class = "input-label">
+      Week
+   </div>
+
+   <select (ionChange)="weekChanged($event)" [(ngModel)]="week">
+      <option *ngFor="let week of weekNumbers" value={{week}}>{{week}}</option>
+   </select>
+  </label>
   <div class="row">
     <div class="col-md-6">
       <div style="display: block;">

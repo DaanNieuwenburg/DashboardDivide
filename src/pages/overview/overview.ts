@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {Platform} from 'ionic-angular';
 import { NavController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+
+import moment from 'moment';
 
 @Component({
   selector: 'page-overview',
@@ -10,7 +13,7 @@ export class OverviewPage {
 public chartWidth: any;
 public chartHeight: any;
 public lineChartData:Array<any> = [
-{data: [2,3,2,6,1,0,9,2], label: 'Failed tests'}
+{data: [0,0,0,0,0,0,0,0], label: 'Failed tests'}
 ];
 public lineChartLabels:Array<any> = ['Monday', 'Thusday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'];
 public lineChartOptions:any = {
@@ -28,6 +31,11 @@ public lineChartColors:Array<any> = [
 public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
 
+private weekNumbers : number[] = [];
+private week: any;
+private startOfWeek;
+private endOfWeek;
+
 // events
 public chartClicked(e:any):void {
   console.log(e);
@@ -36,7 +44,53 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
-  constructor(public navCtrl: NavController, platform: Platform) {
+checkWeek(week){
+   this.startOfWeek = moment().day("Sunday").week(week).format('YYYY-MM-DD');
+  this.endOfWeek = moment().day("Saturday").week(week).format('YYYY-MM-DD');
+  console.log("week begin "+ this.startOfWeek);
+  console.log("week end "+ this.endOfWeek);
+}
+ionViewWillEnter(): void {
+  this.checkWeek(14);
+    this.load();
+  }
+  load(): void {
+    var date = this.startOfWeek;
+    var i = 0;
+    var chartdata : number[] = [];
+    this.http
+      .get('https://apidivide.azurewebsites.net/api/testrun/'+this.startOfWeek + '/' + this.endOfWeek)
+      .subscribe((data: any) => {
+        console.dir(data);
+        while(date <= this.endOfWeek){
+          //console.log("loopdate " + date);
+          for(let j=0; j<data.length; j++){
+          console.log("loopdate " + (moment(date).format('YYYY-MM-DD') + " API date " + moment(data[j].startTime).format('YYYY-MM-DD')));
+          if(moment(date).format('YYYY-MM-DD') == moment(data[j].startTime).format('YYYY-MM-DD')){
+            console.log("failed " + data[j].failed);
+            chartdata[i] =  data[j].failed;
+          }
+          else{
+            chartdata[i] = 0;
+          }
+        }
+          date = moment(date).add('days', 1).format('YYYY-MM-DD');
+          i++;
+        }
+        console.log(chartdata);
+        this.lineChartData = chartdata;
+      },
+      (error: any) => {
+        console.dir(error);
+      });
+  }
+  weekChanged(week) {
+  		console.log("WEEK " + week);
+  	};
+  constructor(public navCtrl: NavController, platform: Platform,public http: HttpClient) {
+    for(let i = 1; i<53; i++){
+      this.weekNumbers[i-1] = i;
+    }
       platform.ready().then((readySource) => {
         this.chartWidth = platform.width() - 40;
         this.chartHeight = platform.height() - 200;
