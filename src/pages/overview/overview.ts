@@ -32,7 +32,6 @@ public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
 
 private weekNumbers : number[] = [];
-private week: any;
 private startOfWeek;
 private endOfWeek;
 
@@ -44,8 +43,19 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
+public optionsFn(): void { //here item is an object
+    console.log(this.week);
+    console.dir("week changed to week: "+this.week);
+    this.checkWeek(this.week);
+    this.load();
+  }
+change(){
+//  this.checkWeek(data);
+//  var temp = weekselect.value;
+  console.log("Week changed to");
+}
 checkWeek(week){
-   this.startOfWeek = moment().day("Sunday").week(week).format('YYYY-MM-DD');
+  this.startOfWeek = moment().day("Sunday").week(week).format('YYYY-MM-DD');
   this.endOfWeek = moment().day("Saturday").week(week).format('YYYY-MM-DD');
   console.log("week begin "+ this.startOfWeek);
   console.log("week end "+ this.endOfWeek);
@@ -62,21 +72,26 @@ ionViewWillEnter(): void {
       .get('https://apidivide.azurewebsites.net/api/testrun/'+this.startOfWeek + '/' + this.endOfWeek)
       .subscribe((data: any) => {
         console.dir(data);
-        while(date <= this.endOfWeek){
-          //console.log("loopdate " + date);
-          for(let j=0; j<data.length; j++){
-          console.log("loopdate " + (moment(date).format('YYYY-MM-DD') + " API date " + moment(data[j].startTime).format('YYYY-MM-DD')));
-          if(moment(date).format('YYYY-MM-DD') == moment(data[j].startTime).format('YYYY-MM-DD')){
-            console.log("failed " + data[j].failed);
-            chartdata[i] =  data[j].failed;
+        if(data.length > 0){
+          while(date <= this.endOfWeek){
+            //console.log("loopdate " + date);
+            for(let j=0; j<data.length; j++){
+            console.log("loopdate " + (moment(date).format('YYYY-MM-DD') + " API date " + moment(data[j].startTime).format('YYYY-MM-DD')));
+            if(moment(date).format('YYYY-MM-DD') == moment(data[j].startTime).format('YYYY-MM-DD')){
+              console.log("failed " + data[j].failed);
+              chartdata[i] =  data[j].failed;
+            }
+            else{
+              chartdata[i] = 0;
+            }
           }
-          else{
-            chartdata[i] = 0;
+            date = moment(date).add('days', 1).format('YYYY-MM-DD');
+            i++;
           }
+        }else{
+          chartdata = [0,0,0,0,0,0,0];
         }
-          date = moment(date).add('days', 1).format('YYYY-MM-DD');
-          i++;
-        }
+
         console.log(chartdata);
         this.lineChartData = chartdata;
       },
@@ -84,9 +99,6 @@ ionViewWillEnter(): void {
         console.dir(error);
       });
   }
-  weekChanged(week) {
-  		console.log("WEEK " + week);
-  	};
   constructor(public navCtrl: NavController, platform: Platform,public http: HttpClient) {
     for(let i = 1; i<53; i++){
       this.weekNumbers[i-1] = i;

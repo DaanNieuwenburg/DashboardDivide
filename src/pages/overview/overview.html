@@ -14,9 +14,9 @@
       Week
    </div>
 
-   <select (ionChange)="weekChanged($event)" [(ngModel)]="week">
-      <option *ngFor="let week of weekNumbers" value={{week}}>{{week}}</option>
-   </select>
+   <ion-select [(ngModel)]="week" (ionChange)="optionsFn()">
+      <ion-option *ngFor="let week of weekNumbers">{{week}}</ion-option>
+   </ion-select>
   </label>
   <div class="row">
     <div class="col-md-6">
