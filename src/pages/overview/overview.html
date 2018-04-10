@@ -14,7 +14,7 @@
       Week
    </div>
 
-   <ion-select [(ngModel)]="week" (ionChange)="optionsFn()">
+   <ion-select [(ngModel)]="week" (ionChange)="optionsFn()" placeholder="week">
       <ion-option *ngFor="let week of weekNumbers">{{week}}</ion-option>
    </ion-select>
   </label>

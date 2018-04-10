@@ -30,12 +30,29 @@ public items;
   ionViewWillEnter(): void {
     this.load();
   }
+  getItems(ev: any) {
+    let serVal = ev.target.value;
+    if (serVal && serVal.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
+      })
+    }
+    if(serVal.length == 0){
+      this.load();
+    }
+  }
+  strDesc(a, b) {
+   if (a.result.id>b.result.id) return -1;
+   else if (a.result.id<b.result.id) return 1;
+   else return 0;
+ }
   load(): void {
     this.http
       .get('http://apidivide.azurewebsites.net/api/testcase/'+this.websiteId+"/"+this.testRunId) //TODO CHANGE URL
       .subscribe((data: any) => {
         console.dir(data);
         this.items = data;
+        this.items.sort(this.strDesc);
       },
       (error: any) => {
         console.dir(error);

@@ -8,6 +8,8 @@
 
 
 <ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel" (ionCancel)="onCancel($event)"></ion-searchbar>
+
 <ion-list>
   <ion-item *ngFor="let item of items" (click)="showDetailsPage(item)"  text-wrap>
     {{item.name}}

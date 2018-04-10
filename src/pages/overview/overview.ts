@@ -32,6 +32,7 @@ public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
 
 private weekNumbers : number[] = [];
+private week : any = moment().week();
 private startOfWeek;
 private endOfWeek;
 
@@ -43,17 +44,13 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
-public optionsFn(): void { //here item is an object
+public optionsFn(): void {
     console.log(this.week);
     console.dir("week changed to week: "+this.week);
     this.checkWeek(this.week);
     this.load();
   }
-change(){
-//  this.checkWeek(data);
-//  var temp = weekselect.value;
-  console.log("Week changed to");
-}
+
 checkWeek(week){
   this.startOfWeek = moment().day("Sunday").week(week).format('YYYY-MM-DD');
   this.endOfWeek = moment().day("Saturday").week(week).format('YYYY-MM-DD');
@@ -61,7 +58,7 @@ checkWeek(week){
   console.log("week end "+ this.endOfWeek);
 }
 ionViewWillEnter(): void {
-  this.checkWeek(14);
+  this.checkWeek(this.week);
     this.load();
   }
   load(): void {
