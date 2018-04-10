@@ -1,13 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Divide Dashboard</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="no-scroll">
-  <h2>Welcome to the dashboard</h2>
-  <p>
-    This page wil represent the latest failed tests and a diagram of how many tests failed </p>
+    <ion-list-header>Last testrun</ion-list-header>
 	<div style="display: block">
     <canvas baseChart
                 [data]="doughnutChartData"
@@ -17,9 +15,9 @@
                 (chartClick)="chartClicked($event)"></canvas>
   </div>
   <br>
+  <ion-list-header>Highly prioritized failed tests</ion-list-header>
   <ion-list>
 	<ion-item *ngFor="let item of items" (click)="showDetailsPage(item)">{{item.name}}
 	<ion-icon name="close-circle" item-left></ion-icon></ion-item>
 	</ion-list>
-
 </ion-content>
