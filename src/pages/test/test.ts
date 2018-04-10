@@ -15,7 +15,6 @@ private testRunId;
 public items;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
-	  //this.WebsiteName = navParams.get("site").name/;
     this.websiteId = navParams.get("website");
     this.testRunId = navParams.get("item").id;
   }
@@ -27,9 +26,11 @@ public items;
   showDetailsPage(item) {
 			 this.navCtrl.push(TestdetailsPage, {item: item});
   }
+  // Triggers API call
   ionViewWillEnter(): void {
     this.load();
   }
+  // Searchbar event
   getItems(ev: any) {
     let serVal = ev.target.value;
     if (serVal && serVal.trim() != '') {
@@ -41,6 +42,7 @@ public items;
       this.load();
     }
   }
+  // Sort event (failed first, passed second)
   strDesc(a, b) {
    if (a.result.id>b.result.id) return -1;
    else if (a.result.id<b.result.id) return 1;

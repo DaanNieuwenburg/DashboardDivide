@@ -15,7 +15,7 @@ public chartHeight: any;
 public lineChartData:Array<any> = [
 {data: [0,0,0,0,0,0,0,0], label: 'Failed tests'}
 ];
-public lineChartLabels:Array<any> = ['Monday', 'Thusday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'];
+public lineChartLabels:Array<any> = ['Sunday','Monday', 'Thusday', 'Wednesday', 'Thursday','Friday','Saturday'];
 public lineChartOptions:any = {
 responsive: true, maintainAspectRatio: false};
 public lineChartColors:Array<any> = [
@@ -36,7 +36,7 @@ private week : any = moment().week();
 private startOfWeek;
 private endOfWeek;
 
-// events
+//  chart events
 public chartClicked(e:any):void {
   console.log(e);
 }
@@ -44,19 +44,21 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
+// Event for week select
 public optionsFn(): void {
     console.log(this.week);
     console.dir("week changed to week: "+this.week);
     this.checkWeek(this.week);
     this.load();
   }
-
+// Check for first and last date of the week
 checkWeek(week){
   this.startOfWeek = moment().day("Sunday").week(week).format('YYYY-MM-DD');
   this.endOfWeek = moment().day("Saturday").week(week).format('YYYY-MM-DD');
   console.log("week begin "+ this.startOfWeek);
   console.log("week end "+ this.endOfWeek);
 }
+// Triggers the API Call
 ionViewWillEnter(): void {
   this.checkWeek(this.week);
     this.load();
@@ -100,9 +102,10 @@ ionViewWillEnter(): void {
     for(let i = 1; i<53; i++){
       this.weekNumbers[i-1] = i;
     }
+    // Check platform size to correct the chart size
       platform.ready().then((readySource) => {
         this.chartWidth = platform.width() - 40;
-        this.chartHeight = platform.height() - 200;
+        this.chartHeight = platform.height() - 250;
         console.log("height " + platform.height());
       })
   }

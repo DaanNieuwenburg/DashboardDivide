@@ -41,6 +41,7 @@ export class TestrunPage {
      else if (a.startTime<b.startTime) return 1;
      else return 0;
    }
+   // Refreshing pull event
    doRefresh(refresher){
      console.log('Begin async operation', refresher);
      this.items.length = 0;
