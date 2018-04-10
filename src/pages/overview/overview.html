@@ -7,8 +7,7 @@
 </ion-header>
 
 <ion-content padding class="no-scroll">
-<p>
-    This page will show the amount of tests that failed of this week.  </p>
+<p>This page shows the amount of failed tests per week.</p>
     <label class = "item item-input item-select">
    <div class = "input-label">
       Week
@@ -17,6 +16,7 @@
    <ion-select [(ngModel)]="week" (ionChange)="optionsFn()" placeholder="week">
       <ion-option *ngFor="let week of weekNumbers">{{week}}</ion-option>
    </ion-select>
+   <!-- <p align="center">{{startOfWeek}} - {{endOfWeek}}</p> -->
   </label>
   <div class="row">
     <div class="col-md-6">

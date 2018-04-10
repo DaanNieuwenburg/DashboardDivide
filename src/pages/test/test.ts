@@ -34,9 +34,15 @@ public items;
   getItems(ev: any) {
     let serVal = ev.target.value;
     if (serVal && serVal.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
-      })
+      if(serVal != "failed" && serVal != "passed"){
+        this.items = this.items.filter((item) => {
+          return (item.name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
+        })
+      }else{
+        this.items = this.items.filter((item) => {
+            return (item.result.status.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
+        })
+      }
     }
     if(serVal.length == 0){
       this.load();
